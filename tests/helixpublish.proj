@@ -47,6 +47,9 @@
     <BuildMoniker Condition="'$(IsOfficial)'=='true' And '$(ProductBuildId)'!=''">$(ProductBuildId)</BuildMoniker>
     <HelixArchLabel>$(Platform)</HelixArchLabel>
     <HelixConfigLabel>$(BuildType)</HelixConfigLabel>
+
+    <!-- If we have a ProductBuildId, that means re-spins are an option, so use the OfficialBuildId to differentiate attempts -->
+    <HelixAttempt Condition="'$(ProductBuildId)'!=''">$(OfficialBuildId)</HelixAttempt>
   </PropertyGroup>
 
   <!-- Set Helix environment vars based on target platform -->
